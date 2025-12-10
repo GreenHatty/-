@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>摸鱼乐园：治愈时光</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Varela+Round&family=VT323&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --color-bg: #FFF5F7;
+        --color-primary: #FFB7B2;
+        --color-secondary: #B5EAD7;
+        --color-accent: #E2F0CB;
+        --color-text: #6E5773;
+        --color-dark: #4A3B4E;
+        --shadow-sharp: 4px 4px 0px rgba(74, 59, 78, 0.2);
+        --shadow-soft: 0 4px 12px rgba(0,0,0,0.05);
+      }
+      body {
+        font-family: 'Varela Round', sans-serif;
+        background-color: var(--color-bg);
+        color: var(--color-text);
+        overflow: hidden;
+        user-select: none;
+        -webkit-user-select: none;
+      }
+      .font-pixel {
+        font-family: 'VT323', monospace;
+      }
+      
+      /* Background Patterns */
+      .bg-pattern {
+        position: fixed;
+        top: 0; left: 0; width: 100%; height: 100%;
+        background-image: radial-gradient(var(--color-secondary) 15%, transparent 16%), radial-gradient(var(--color-primary) 15%, transparent 16%);
+        background-size: 60px 60px;
+        background-position: 0 0, 30px 30px;
+        opacity: 0.15;
+        z-index: -1;
+        animation: slideBg 60s linear infinite;
+        pointer-events: none;
+      }
+      
+      @keyframes slideBg {
+        0% { background-position: 0 0, 30px 30px; }
+        100% { background-position: 60px 60px, 90px 90px; }
+      }
+
+      /* Cute Scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: var(--color-primary); 
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-track {
+        background: transparent;
+      }
+
+      /* Animations */
+      @keyframes float {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-5px); }
+      }
+      .animate-float {
+        animation: float 3s ease-in-out infinite;
+      }
+
+      @keyframes popIn {
+        0% { transform: scale(0.8); opacity: 0; }
+        100% { transform: scale(1); opacity: 1; }
+      }
+      .animate-pop {
+        animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      }
+      
+      @keyframes breathe {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+      }
+      .animate-breathe {
+        animation: breathe 2s ease-in-out infinite;
+      }
+
+      /* UI Elements */
+      .cozy-card {
+        background: white;
+        border-radius: 20px;
+        box-shadow: var(--shadow-sharp);
+        border: 2px solid var(--color-dark);
+      }
+      
+      .cozy-btn {
+        transition: all 0.1s;
+        border-radius: 12px;
+        border: 2px solid var(--color-dark);
+        box-shadow: 0 4px 0 var(--color-dark);
+      }
+      .cozy-btn:active {
+        transform: translateY(4px);
+        box-shadow: 0 0 0 var(--color-dark);
+      }
+      
+      .cozy-text-shadow {
+        text-shadow: 2px 2px 0px white;
+      }
+      
+      img, svg {
+        pointer-events: none;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://aistudiocdn.com/react@^19.2.1/",
+    "react": "https://aistudiocdn.com/react@^19.2.1",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.1/",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.32.0"
+  }
+}
+</script>
+</head>
+  <body>
+    <div class="bg-pattern"></div>
+    <div id="root" class="h-screen w-screen"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
